@@ -23,13 +23,20 @@ function load_page() {
   $.get($link.attr('href'), {remote: true}, function(result) {
     $content.removeClass('loading');
     $content_inner.html(result).fadeIn(200);
+    window.history.pushState(null, 'Nezumi ' + $link.attr('data'), '/#' + $link.attr('href'));
   });
   
   return false;
 }
 
+
 $(function() {
+  root_url = window.location.href;  
   $('#header nav a').click(load_page);
+  
+  window.onpopstate = function(event) {
+    console.log(event.currentTarget);
+  }
   
   if (window.location.href.indexOf('#') != -1) {
     
