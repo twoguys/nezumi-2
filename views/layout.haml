@@ -4,9 +4,10 @@
   / All content & design copyright 2012 Marshall Huss of StackLogic, LLC
   %head
     %meta{ content: "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
-    %meta{ name: "Description", "http-equiv" => "Description", content: "We design and build things you’re proud to show off." }
-    %meta{ name: "Keywords", "http-equiv" => "Keywords", content: "twoguys, two guys, two, guys, design, development, studio, web, ruby, rails, ruby on rails, iphone" }
-    %title Two Guys
+    %meta{ name: "Description", "http-equiv" => "Description", content: "Manage your Heroku apps remotely." }
+    %meta{ content: 'Nezumi for iPhone', property: 'og:title' }
+    %meta{ name: "Keywords", "http-equiv" => "Keywords", content: "nezumi, heroku, iphone, ipad, android" }
+    %title Nezumi for iPhone
     
     %link{ id: 'favicon', href: '/images/favicon.png', rel: 'icon', type: 'image/x-icon' }
     %link{ href: '/stylesheets/reset.css', rel: 'stylesheet', media: 'screen, projection', type: "text/css" }
@@ -28,16 +29,17 @@
       %nav
         %ul
           %li#iphone.active
-            %a{href: "/"} iPhone
+            %a{href: "/iphone", data: 'Nezumi for iPhone'} iPhone
           %li#ipad
-            %a{href: "/ipad"} iPad
+            %a{href: "/ipad", data: 'Nezumi for iPad'} iPad
           %li#android
-            %a{href: "/android"} Android
+            %a{href: "/android", data: 'Nezumi for Android'} Android
           %li#addons
-            %a{href: "/addons"} Add-ons
+            %a{href: "/addons", data: 'Nezumi Add-Ons'} Add-ons
     
     %section#content
-      #swiper= yield
+      #content-inner
+        = yield
     
     %footer#footer
       #twitter

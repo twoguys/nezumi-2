@@ -5,11 +5,11 @@ require 'sass'
 set :haml, format: :html5
 
 get '/' do
-  if params[:remote]
-    haml :iphone, layout: false
-  else
-    haml :iphone
-  end
+  haml :iphone
+end
+
+get '/iphone' do
+  haml :iphone, layout: false
 end
 
 get '/ipad' do
@@ -17,11 +17,11 @@ get '/ipad' do
 end
 
 get '/android' do
-  haml :ipad, layout: false
+  haml :android, layout: false
 end
 
 get '/addons' do
-  haml :ipad, layout: false
+  haml :addons, layout: false
 end
 
 # STYLESHEETS
