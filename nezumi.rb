@@ -17,11 +17,11 @@ get '/ipad' do
 end
 
 get '/android' do
-  haml :ipad, layout: false
+  haml :android, layout: false
 end
 
 get '/addons' do
-  haml :ipad, layout: false
+  haml :addons, layout: false
 end
 
 # STYLESHEETS
