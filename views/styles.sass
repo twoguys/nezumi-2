@@ -1,0 +1,231 @@
+$background_color: #ededed
+$text_color: #0f0a21
+$link_color: #9f57cb
+
+@mixin rounded($radius: 5px)
+	-webkit-border-radius: $radius
+	-moz-border-radius: $radius
+	border-radius: $radius
+	
+@mixin transition($property: all, $time: 0.2s, $timing: linear)
+	-webkit-transition: $property $time $timing
+	-moz-transition: $property $time $timing
+	-ms-transition: $property $time $timing
+	-o-transition: $property $time $timing
+	transition: $property $time $timing
+
+@mixin clearfix
+	display: inline-block
+	&:after
+		content: "."
+		display: block
+		height: 0
+		clear: both
+		visibility: hidden
+			
+html, body
+	font-family: Lato, "Helvetica Neue", Arial, sans-serif
+	font-size: 15px
+	font-weight: 500
+	color: $text_color
+	background: $background_color url(../images/background.png) repeat
+	text-shadow: 0 1px 0 #fff
+	overflow-x: hidden
+
+h1
+	font-size: 40px
+	font-weight: 300
+	text-align: center
+	margin-bottom: 50px
+	em
+		font-style: italic
+		font-weight: 500
+h3
+	font-size: 18px
+
+a, a:visited
+	color: $link_color
+	text-shadow: none
+	outline: none
+
+#header, #content, #footer
+	width: 800px
+	margin: 0 auto
+
+#header
+	height: 35px
+	padding: 20px 0
+	border-bottom: 1px solid #e0e0e0
+	
+	#logo
+		display: block
+		float: left
+		background: $background_color url(../images/logo.png) no-repeat 0 0
+		width: 124px
+		height: 35px
+		@include transition
+		text-indent: -9999px
+		&:hover
+			background-color: $link_color
+	
+	nav
+		float: right
+		li
+			float: left
+			margin-right: 15px
+			a
+				display: block
+				height: 32px
+				text-indent: -9999px
+				background: transparent url(../images/nav.png) no-repeat 0 0
+		li#iphone
+			a
+				width: 63px
+			a:hover
+				background-position: 0 -40px
+			a:active
+				background-position: 0 -80px
+		li#iphone a:active, li#iphone.active a
+			background-position: 0 -80px
+		li#ipad
+			a
+				width: 51px
+				background-position: -71px 0
+			a:hover
+				background-position: -71px -40px
+		li#ipad a:active, li#ipad.active a
+			background-position: -71px -80px
+		li#android
+			a
+				width: 68px
+				background-position: -129px 0
+			a:hover
+				background-position: -129px -40px
+		li#android a:active, li#android.active a
+			background-position: -129px -80px
+		li#addons
+			a
+				width: 68px
+				background-position: -203px 0
+			a:hover
+				background-position: -203px -40px
+		li#addons a:active, li#addons.active a
+			background-position: -203px -80px
+
+#content
+	border-top: 1px solid #f0f0f0
+	padding: 50px 0
+	border-bottom: 1px solid #e0e0e0
+	min-height: 1000px
+	
+	#swiper
+		position: relative
+	
+	&.loading
+		min-height: 300px
+		background: transparent url(../images/spinner.gif) no-repeat 50% 150px
+		*
+			visibility: hidden
+
+	.screenshot
+		margin-bottom: 50px
+
+	.get-the-app
+		display: block
+		width: 220px
+		height: 50px
+		margin: 0 auto 70px
+		background: transparent url(../images/get-the-app.png) no-repeat 0 0
+
+	.quote
+		width: 400px
+		margin: 0 auto 50px
+		background: #e1e1e1
+		border: 1px solid #dadada
+		padding: 8px 14px
+		@include rounded(3px)
+		p
+			margin: 0 0 5px
+		strong
+			text-align: right
+			display: block
+	
+	.description
+		width: 590px
+		margin: 0 auto
+		ul
+			@include clearfix
+			li
+				float: left
+				width: 270px
+				margin: 0 50px 20px 0
+			li:nth-child(even)
+				margin-right: 0
+
+#footer
+	border-top: 1px solid #f0f0f0
+	padding: 20px 0
+	height: 40px
+	#twitter
+		#who, #what
+			float: left
+		#who
+			background: transparent url(../images/bird.png) no-repeat 0 9px
+			padding: 9px 0 0 35px
+			margin: 0 10px 0 15px
+		#what
+			padding: 3px 6px 3px 16px
+			background: transparent url(../images/twitter-bg.png) no-repeat 0 0
+			width: 630px
+			height: 35px
+			font-size: 13px
+
+@media (min-device-width:1024px) and (max-width:800px), screen and (max-device-width:480px) and (orientation:portrait), (min-device-width:481px) and (max-device-width:1024px) and (orientation:portrait)
+	nav
+		position: relative
+		width: 100%
+		float: none
+		height: 90px
+		ul li
+			float: left
+			border-bottom: none
+			border-right: 1px solid #e6e6e6
+			width: 33.3%
+			height: 90px
+			text-align: center
+			margin-right: -1px
+			a
+				height: 90px
+				line-height: 90px
+		ul li.active:after
+			display: none
+		ul li.details
+			display: none
+	.content
+		width: 100%
+		float: none
+		position: relative
+		section.inner
+			padding: 0 6%
+		.us ul li
+			width: 45%
+			min-width: 45%
+
+@media screen and (max-device-width:480px) and (orientation:landscape)
+	nav
+		position: relative
+		height: 100%
+		min-height: 100%
+		ul
+			height: 100%
+			li
+				height: 80px
+				a, a:visited
+					height: 80px
+					line-height: 80px
+			li.active
+				border-bottom: none
+	.content
+		.us ul li
+			width: 45%
+			min-width: 45%
