@@ -45,6 +45,10 @@ get '/addons' do
   haml :addons, layout: false
 end
 
+get '/appstore' do
+  redirect 'http://itunes.apple.com/us/app/nezumi/id346715875?mt=8'
+end
+
 # STYLESHEETS
 
 get '/stylesheets/reset.css' do
