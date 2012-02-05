@@ -3,10 +3,14 @@ require 'sinatra'
 require 'haml'
 require 'sass'
 require 'twitter'
+require 'dalli'
+
+set :cache, Dalli::Client.new
 
 set :haml, format: :html5
 
 get '/' do
+  response["Cache-Control"] = "max-age=300, public"
   haml :iphone
 end
 

@@ -6,6 +6,7 @@ GEM
       multi_json (~> 1.0)
     addressable (2.2.6)
     daemons (1.1.6)
+    dalli (1.1.4)
     eventmachine (0.12.10)
     faraday (0.7.6)
       addressable (~> 2.2)
@@ -55,6 +56,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dalli
   foreman
   haml
   heroku
