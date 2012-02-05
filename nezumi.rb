@@ -4,8 +4,11 @@ require 'haml'
 require 'sass'
 require 'twitter'
 require 'dalli'
+require 'rack-cache'
 
-set :cache, Dalli::Client.new
+$cache = Dalli::Client.new
+set :cache, $cache
+use ::Rack::Cache, :metastore => $cache, :entitystore => 'file:tmp/cache/entity'
 
 set :haml, format: :html5
 
