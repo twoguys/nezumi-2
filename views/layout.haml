@@ -7,7 +7,7 @@
     %meta{ name: "Description", "http-equiv" => "Description", content: "Manage your Heroku apps remotely." }
     %meta{ content: 'Nezumi for iPhone', property: 'og:title' }
     %meta{ name: "Keywords", "http-equiv" => "Keywords", content: "nezumi, heroku, iphone, ipad, android" }
-    %title Nezumi for iPhone
+    %title Nezumi for Heroku
     
     %link{ id: 'favicon', href: '/images/favicon.png', rel: 'icon', type: 'image/x-icon' }
     %link{ href: '/stylesheets/reset.css', rel: 'stylesheet', media: 'screen, projection', type: "text/css" }
@@ -45,7 +45,8 @@
       #twitter
         #who
           %a{href: "http://twitter.com/nezumiapp"} nezumiapp
-        #what latest twitter comment goes here
+        #what 
+          = Twitter.user_timeline("nezumiapp").first.text
             
     :javascript
       var _gaq = _gaq || [];

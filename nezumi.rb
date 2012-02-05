@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'sinatra'
+require 'haml'
 require 'sass'
+require 'twitter'
 
 set :haml, format: :html5
 
