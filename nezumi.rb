@@ -1,28 +1,32 @@
 require 'rubygems'
 require 'rack/cache'
 require 'sinatra'
+require "sinatra/cache_assets"
 require 'haml'
 require 'sass'
 require 'twitter'
 require 'dalli'
 
+# Cache it...cache it good
 $cache = Dalli::Client.new
+set :enable_cache, true
 set :cache, $cache
-use ::Rack::Cache, :metastore => $cache, :entitystore => 'file:tmp/cache/entity'
+use ::Rack::Cache, metastore: $cache, entitystore: 'file:tmp/cache/entity'
+use Sinatra::CacheAssets, max_age: 7200  # seconds, defaults to 86400
 
 set :haml, format: :html5
 
 before do
   # response["Cache-Control"] = "max-age=300, public"
+  # set :static_cache_control, [:public, max_age: 300]
   cache_control :public, max_age: 300
-  set :static_cache_control, [:public, max_age: 300]
 end
 
 get '/' do
   begin
     @twitter_text = Twitter.user_timeline("nezumiapp").first.text
   rescue
-    # rate exceeded
+    # rate exceeded...by your face!
   end
   haml :iphone
 end
