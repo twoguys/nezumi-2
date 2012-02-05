@@ -1,10 +1,10 @@
 require 'rubygems'
+require 'rack/cache'
 require 'sinatra'
 require 'haml'
 require 'sass'
 require 'twitter'
 require 'dalli'
-require 'rack-cache'
 
 $cache = Dalli::Client.new
 set :cache, $cache
@@ -13,7 +13,9 @@ use ::Rack::Cache, :metastore => $cache, :entitystore => 'file:tmp/cache/entity'
 set :haml, format: :html5
 
 before do
-  response["Cache-Control"] = "max-age=300, public"
+  # response["Cache-Control"] = "max-age=300, public"
+  cache_control :public, max_age: 300
+  set :static_cache_control, [:public, max_age: 300]
 end
 
 get '/' do
