@@ -46,7 +46,7 @@
         #who
           %a{href: "http://twitter.com/nezumiapp"} nezumiapp
         #what 
-          = Twitter.user_timeline("nezumiapp").first.text
+          = @twitter_text
             
     :javascript
       var _gaq = _gaq || [];

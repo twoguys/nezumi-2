@@ -17,6 +17,11 @@ before do
 end
 
 get '/' do
+  begin
+    @twitter_text = Twitter.user_timeline("nezumiapp").first.text
+  rescue
+    # rate exceeded
+  end
   haml :iphone
 end
 
