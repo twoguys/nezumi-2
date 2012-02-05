@@ -12,8 +12,11 @@ use ::Rack::Cache, :metastore => $cache, :entitystore => 'file:tmp/cache/entity'
 
 set :haml, format: :html5
 
-get '/' do
+before do
   response["Cache-Control"] = "max-age=300, public"
+end
+
+get '/' do
   haml :iphone
 end
 
