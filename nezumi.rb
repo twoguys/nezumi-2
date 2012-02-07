@@ -30,15 +30,27 @@ get '/iphone' do
 end
 
 get '/ipad' do
-  haml :ipad, layout: false
+  if params[:remote]
+    haml :ipad, layout: false
+  else
+    haml :ipad
+  end
 end
 
 get '/android' do
-  haml :android, layout: false
+  if params[:remote]
+    haml :android, layout: false
+  else
+    haml :android
+  end
 end
 
 get '/addons' do
-  haml :addons, layout: false
+  if params[:remote]
+    haml :addons, layout: false
+  else
+    haml :addons
+  end
 end
 
 # STYLESHEETS
