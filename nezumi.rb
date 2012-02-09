@@ -22,10 +22,17 @@ end
 
 get '/' do
   begin
-    tweet = Twitter.user_timeline("nezumiapp").first.text.slice[0..100]
-    @twitter_text = tweet.size > 94 ? tweet.slice(0..93) << "..." : tweet
-  rescue
+    @twitter_text = settings.cache.get("tweet")
+    unless @twitter_text
+      tweet = Twitter.user_timeline("nezumiapp").first.text
+      @twitter_text = tweet.size > 94 ? tweet.slice(0..93) << "..." : tweet
+      settings.cache.set("tweet", @twitter_text)
+    end
+  rescue Twitter::Error => e
     # rate exceeded...by your face!
+    @twitter_text = e.message
+  rescue Dalli::RingError
+    # no memcache
   end
   haml :iphone
 end
