@@ -36,9 +36,11 @@ $(function() {
   }
   
   if (window.location.href.indexOf('#') != -1) {
-    var url = window.location.href.split('#')[1];
-    load_url(url);
-    store_state('/#/' + url);
+    var url = window.location.href.split('#/')[1];
+    if (url != 'iphone') {
+      load_url(url);
+      store_state('/#/' + url);
+    }
   } else {
     store_state('/#/iphone');
   }
