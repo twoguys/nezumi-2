@@ -22,7 +22,8 @@ end
 
 get '/' do
   begin
-    @twitter_text = Twitter.user_timeline("nezumiapp").first.text
+    tweet = Twitter.user_timeline("nezumiapp").first.text.slice[0..100]
+    @twitter_text = tweet.size > 94 ? tweet.slice(0..93) << "..." : tweet
   rescue
     # rate exceeded...by your face!
   end
