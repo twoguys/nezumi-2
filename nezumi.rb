@@ -26,7 +26,7 @@ get '/' do
     unless @twitter_text
       tweet = Twitter.user_timeline("nezumiapp").first.text
       @twitter_text = tweet.size > 94 ? tweet.slice(0..93) << "..." : tweet
-      settings.cache.set("tweet", @twitter_text)
+      settings.cache.set("tweet", @twitter_text, 300)
     end
   rescue Twitter::Error => e
     # rate exceeded...by your face!
