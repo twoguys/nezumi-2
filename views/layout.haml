@@ -31,10 +31,10 @@
         %ul
           %li#iphone.active
             %a{href: "iphone", data: 'iPhone'} iPhone
-          %li#ipad
-            %a{href: "ipad", data: 'iPad'} iPad
-          %li#addons
-            %a{href: "addons", data: 'Add-Ons'} Add-ons
+          / %li#ipad
+          /   %a{href: "ipad", data: 'iPad'} iPad
+          / %li#addons
+          /   %a{href: "addons", data: 'Add-Ons'} Add-ons
     
     %section#content
       #content-inner
@@ -44,8 +44,8 @@
       #twitter
         #who
           %a{href: "http://twitter.com/nezumiapp"} nezumiapp
-        #what 
-          = @twitter_text
+        / #what 
+        /   = @twitter_text
             
     :javascript
       var _gauges = _gauges || [];
