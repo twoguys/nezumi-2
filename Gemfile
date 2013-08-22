@@ -8,6 +8,7 @@ gem 'sass'
 gem 'foreman'
 gem 'heroku'
 gem 'twitter'
+gem 'memcachier'
 gem 'dalli'
 gem 'rack-cache'
 
