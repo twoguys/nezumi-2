@@ -24,6 +24,7 @@ function load_url(url) {
   });
 }
 
+/*
 $(function() { 
   $('#header nav a').click(nav_clicked);
   
@@ -45,3 +46,4 @@ $(function() {
     store_state('/#/iphone');
   }
 });
+*/
