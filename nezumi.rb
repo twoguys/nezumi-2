@@ -6,10 +6,10 @@ require 'sass'
 require 'dalli'
 
 # Cache it...cache it good
-$cache = Dalli::Client.new
-set :enable_cache, true
-set :cache, $cache
-use ::Rack::Cache, metastore: $cache, entitystore: 'file:tmp/cache/entity'
+#$cache = Dalli::Client.new
+#set :enable_cache, true
+#set :cache, $cache
+#use ::Rack::Cache, metastore: $cache, entitystore: 'file:tmp/cache/entity'
 
 set :haml, format: :html5
 
